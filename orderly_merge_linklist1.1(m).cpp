@@ -85,13 +85,13 @@ int  main()
 {  
     int i1,i2;
     Linklist A,B,t;  
-    printf("ÇëÊäÈëÁ´±í1\n");
+    printf("è¯·è¾“å…¥é“¾è¡¨1\n");
     i1=creatlist(A); 
     iCount=0;
-    printf("ÇëÊäÈëÁ´±í2£º\n");
+    printf("è¯·è¾“å…¥é“¾è¡¨2ï¼š\n");
 	i2=creatlist(B); 
 	t=merge2(A,i1,B,i2);
-	printf("ĞÂÁ´±íÊÇ£º\n");
+	printf("æ–°é“¾è¡¨æ˜¯ï¼š\n");
 	print(t);
     
     return 0;  
