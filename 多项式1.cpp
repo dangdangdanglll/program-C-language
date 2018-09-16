@@ -22,7 +22,7 @@ struct duoxs *create(int a)
 		end->next=nnew;
 		end=nnew;
 	}
-//	end->next=NULL;
+	end->next=NULL;
 	return head;
 }
 
@@ -52,9 +52,19 @@ int pro(struct duoxs *a,int c)
 	for(int i=0;i<c;i++)
 	{
 		if(poi->constant<0)
-		  printf("%dX^%d",poi->constant,poi->index);
+	        {
+			if(poi->index==1)
+				printf("%dX",poi->constant);
+			else
+				printf("%dX^%d",poi->constant,poi->index);
+		}
+		  
 		else
-		  printf("+%dX^%d",poi->constant,poi->index);
+		{
+			if(poi->index==1)
+				printf("+%dX",poi->constant);
+			else
+				printf("+%dX^%d",poi->constant,poi->index);
 		poi=poi->next;
 	}
 }
