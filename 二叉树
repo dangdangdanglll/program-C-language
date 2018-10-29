@@ -1,1 +1,66 @@
-lllllll
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct TreeNode{
+    char ch;
+    struct TreeNode *lchild, *rchild;
+}Tree, *PTree;                                //定义树节点的结构体
+void createBiTree(PTree *p)                   //建立二叉树
+{
+    char ch;
+    scanf("%c", &ch);
+    getchar();                                //此时%c读取的是单个字符，所以用getchar接收
+    if(ch == '#')
+         *p = NULL;
+    else
+    {
+        *p = (PTree)malloc(sizeof(Tree));
+        (*p) -> ch = ch;
+        
+        printf("请输入%c的左子树\n", ch);
+        createBiTree(&(*p) -> lchild);
+        
+        printf("请输入%c的右子树\n", ch);
+        createBiTree(&(*p) -> rchild);
+    }
+
+}
+void preOrderTraverse(PTree p)                //前序遍历
+{
+    if(p == NULL)
+        return ;
+    printf("%c ", p -> ch);
+    preOrderTraverse(p -> lchild);
+    preOrderTraverse(p -> rchild);
+}
+void InOrderTraverse(PTree p)                 //中序遍历
+{
+    if(p == NULL)
+        return;
+    InOrderTraverse(p -> lchild);
+    printf("%c ", p -> ch);
+    InOrderTraverse(p -> rchild);
+}
+void BackOrderTraverse(PTree p)               //后续遍历
+{
+    if(p == NULL)
+        return ;
+    BackOrderTraverse(p -> lchild);
+    BackOrderTraverse(p -> rchild);
+    printf("%c ", p -> ch);
+}
+int main()
+{
+    PTree pt;
+    createBiTree(&pt);
+    
+    printf("前序:"); 
+    preOrderTraverse(pt);
+   
+    printf("\n中序:"); 
+    InOrderTraverse(pt);
+  
+    printf("\n后序:");
+    BackOrderTraverse(pt);
+	return 0;
+}
